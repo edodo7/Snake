@@ -3,8 +3,8 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#changeColor" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snake.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#changeColor" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.snake.Controller">
    <children>
-      <Canvas fx:id="canvas" height="600.0" layoutX="1.0" onKeyPressed="#changeColor" width="800.0" />
+      <Canvas fx:id="canvas" height="600.0" width="800.0" />
    </children>
 </Pane>

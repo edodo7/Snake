@@ -12,10 +12,15 @@ public class Controller {
     private @FXML Canvas canvas;
 
     @FXML
+    public void initialize(){
+
+    }
+
+    @FXML
     public void changeColor(KeyEvent keyEvent) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         if (keyEvent.getCode() == KeyCode.LEFT){
-            gc.setFill(Color.BLACK);
+            gc.setFill(Color.BLUE);
         }
         if (keyEvent.getCode() == KeyCode.RIGHT){
             gc.setFill(Color.YELLOW);
@@ -29,5 +34,7 @@ public class Controller {
         gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
     }
 
-
+    public Canvas getCanvas() {
+        return canvas;
+    }
 }
