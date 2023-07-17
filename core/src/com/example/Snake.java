@@ -42,16 +42,16 @@ public class Snake {
 
     public void move(){
         Rectangle currentHead = body.getFirst();
-        if (currentHead.x >= Gdx.graphics.getWidth()){
+        if (currentHead.x >= Gdx.graphics.getWidth() && isMovingHorizontal()){
             currentHead.setX(0);
         }
-        else if (currentHead.x <= 0){
+        else if (currentHead.x <= 0 && isMovingHorizontal()){
             currentHead.setX(Gdx.graphics.getWidth());
         }
-        else if (currentHead.y >= Gdx.graphics.getHeight()){
+        else if (currentHead.y >= Gdx.graphics.getHeight() && isMovingVertical()){
             currentHead.setY(0);
         }
-        else if (currentHead.y <= 0){
+        else if (currentHead.y <= 0 && isMovingVertical()){
             currentHead.setY(Gdx.graphics.getHeight());
         }
         Rectangle newHead = new Rectangle(currentHead.x + headDirection.x, currentHead.y + headDirection.y,WIDTH,HEIGHT);
@@ -99,4 +99,11 @@ public class Snake {
     public LinkedList<Rectangle> getBody() {
         return body;
     }
+    private boolean isMovingVertical(){
+        return headDirection.y != 0;
+    }
+    private boolean isMovingHorizontal(){
+        return headDirection.x != 0;
+    }
+
 }
