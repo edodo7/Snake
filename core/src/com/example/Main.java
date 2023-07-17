@@ -57,6 +57,9 @@ public class Main extends ApplicationAdapter {
 			int y = random.nextInt((Gdx.graphics.getHeight() - 50) - 50 + 1) + 50;
 			fruit.setPosition(x,y);
 		}
+		if (snake.hasBittenTail()){
+			System.exit(0);
+		}
 		if (clock % 5 == 0){
 			snake.move();
 		}

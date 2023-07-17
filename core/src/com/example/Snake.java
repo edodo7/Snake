@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Snake {
     private LinkedList<Rectangle> body;
@@ -71,6 +72,17 @@ public class Snake {
             headDirection.set(-WIDTH,0);
     }
 
+    public boolean hasBittenTail(){
+        ListIterator<Rectangle> iterator = body.listIterator(1);
+        Rectangle head = body.getFirst();
+        while (iterator.hasNext()){
+            Rectangle current = iterator.next();
+            if (head.overlaps(current)){
+                return true;
+            }
+        }
+        return false;
+    }
     public LinkedList<Rectangle> getBody() {
         return body;
     }
