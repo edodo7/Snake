@@ -14,8 +14,8 @@ public class Snake {
     private Vector2 headDirection;
     private Vector2 tailDirection;
     private int segmentsToAdd;
-    private final int WIDTH = 20; // x axis
-    private final int HEIGHT = 20; // y axis
+    private final int WIDTH = 20;
+    private final int HEIGHT = 20;
     public Snake(){
         Rectangle head = new Rectangle(50,50,WIDTH,HEIGHT);
         body = new LinkedList<>();
