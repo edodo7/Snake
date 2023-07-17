@@ -35,6 +35,8 @@ public class Snake {
             return true;
         }
         return false; **/
+      segmentsToAdd++;
+      System.out.println(segmentsToAdd);
       return true;
     }
 

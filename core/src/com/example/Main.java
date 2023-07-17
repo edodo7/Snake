@@ -44,7 +44,7 @@ public class Main extends ApplicationAdapter {
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 			snake.moveRight();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
 			snake.hasEaten(fruit);
 		}
 		if (clock % 15 == 0){
