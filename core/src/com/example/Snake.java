@@ -1,5 +1,6 @@
 package com.example;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -41,6 +42,18 @@ public class Snake {
 
     public void move(){
         Rectangle currentHead = body.getFirst();
+        if (currentHead.x >= Gdx.graphics.getWidth()){
+            currentHead.setX(0);
+        }
+        else if (currentHead.x <= 0){
+            currentHead.setX(Gdx.graphics.getWidth());
+        }
+        else if (currentHead.y >= Gdx.graphics.getHeight()){
+            currentHead.setY(0);
+        }
+        else if (currentHead.y <= 0){
+            currentHead.setY(Gdx.graphics.getHeight());
+        }
         Rectangle newHead = new Rectangle(currentHead.x + headDirection.x, currentHead.y + headDirection.y,WIDTH,HEIGHT);
         body.addFirst(newHead);
         Rectangle removedLast = body.removeLast();

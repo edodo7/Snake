@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Main extends ApplicationAdapter {
@@ -43,19 +45,29 @@ public class Main extends ApplicationAdapter {
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)){
 			snake.moveUp();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
 			snake.moveDown();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+		else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 			snake.moveLeft();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 			snake.moveRight();
 		}
-		if (snake.hasEaten(fruit)){
-			int x = random.nextInt((Gdx.graphics.getWidth() - 50) - 50 + 1) + 50;
-			int y = random.nextInt((Gdx.graphics.getHeight() - 50) - 50 + 1) + 50;
-			fruit.setPosition(x,y);
+		if (snake.hasEaten(fruit)) {
+			LinkedList<Rectangle> snakeBody = snake.getBody();
+			boolean fruitOnSnakeBody = false;
+			do {
+				int x = random.nextInt((Gdx.graphics.getWidth() - 50) - 50 + 1) + 50;
+				int y = random.nextInt((Gdx.graphics.getHeight() - 50) - 50 + 1) + 50;
+				fruit.setPosition(x, y);
+				for (Rectangle segment : snakeBody) {
+					if (Intersector.overlaps(fruit, segment)) {
+						fruitOnSnakeBody = true;
+						break;
+					}
+				}
+			} while (fruitOnSnakeBody);
 		}
 		if (snake.hasBittenTail()){
 			System.exit(0);
