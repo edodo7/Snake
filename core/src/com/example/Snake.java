@@ -1,6 +1,7 @@
 package com.example;
 
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -29,15 +30,12 @@ public class Snake {
     }
 
     public boolean hasEaten(Circle fruit){
-      /**  Rectangle head = body.getFirst();
+        Rectangle head = body.getFirst();
         if (Intersector.overlaps(fruit,head)){
             segmentsToAdd++;
             return true;
         }
-        return false; **/
-      segmentsToAdd++;
-      System.out.println(segmentsToAdd);
-      return true;
+        return false;
     }
 
     public void move(){

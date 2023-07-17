@@ -9,19 +9,25 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 
+import java.util.Random;
+
 public class Main extends ApplicationAdapter {
 
 	private ShapeRenderer shape;
 	private Snake snake;
 	private Circle fruit;
 	private int clock;
+	private Random random;
 
 	@Override
 	public void create() {
 		shape = new ShapeRenderer();
 		snake = new Snake();
-		fruit = new Circle();
 		clock = 0;
+		random = new Random();
+		int x = random.nextInt((Gdx.graphics.getWidth() - 50) - 50 + 1) + 50;
+		int y = random.nextInt((Gdx.graphics.getHeight() - 50) - 50 + 1) + 50;
+		fruit = new Circle(x,y,10);
 	}
 
 	@Override
@@ -32,6 +38,8 @@ public class Main extends ApplicationAdapter {
 		for (Rectangle segment : snake.getBody()){
 			shape.rect(segment.x, segment.y, segment.width, segment.height);
 		}
+		shape.setColor(Color.RED);
+		shape.circle(fruit.x, fruit.y, fruit.radius);
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)){
 			snake.moveUp();
 		}
@@ -44,10 +52,12 @@ public class Main extends ApplicationAdapter {
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
 			snake.moveRight();
 		}
-		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-			snake.hasEaten(fruit);
+		if (snake.hasEaten(fruit)){
+			int x = random.nextInt((Gdx.graphics.getWidth() - 50) - 50 + 1) + 50;
+			int y = random.nextInt((Gdx.graphics.getHeight() - 50) - 50 + 1) + 50;
+			fruit.setPosition(x,y);
 		}
-		if (clock % 15 == 0){
+		if (clock % 5 == 0){
 			snake.move();
 		}
 		clock++;

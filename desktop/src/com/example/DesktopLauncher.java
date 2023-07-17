@@ -12,7 +12,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setIdleFPS(60);
-		config.setTitle("testgdx");
+		config.setTitle("Snake");
 		config.setWindowedMode(WIDTH,HEIGHT);
 		config.setResizable(false);
 		new Lwjgl3Application(new Main(), config);
