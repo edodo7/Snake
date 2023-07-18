@@ -14,8 +14,8 @@ public class Snake {
     private Vector2 headDirection;
     private Vector2 tailDirection;
     private int segmentsToAdd;
-    private final int WIDTH = 20;
-    private final int HEIGHT = 20;
+    private final int WIDTH = 30;
+    private final int HEIGHT = 30;
     public Snake(){
         Rectangle head = new Rectangle(50,50,WIDTH,HEIGHT);
         body = new LinkedList<>();
@@ -45,13 +45,13 @@ public class Snake {
         if (currentHead.x >= Gdx.graphics.getWidth() && isMovingHorizontal()){
             currentHead.setX(0);
         }
-        else if (currentHead.x <= 0 && isMovingHorizontal()){
+        else if (currentHead.x < 0 && isMovingHorizontal()){
             currentHead.setX(Gdx.graphics.getWidth());
         }
         else if (currentHead.y >= Gdx.graphics.getHeight() && isMovingVertical()){
             currentHead.setY(0);
         }
-        else if (currentHead.y <= 0 && isMovingVertical()){
+        else if (currentHead.y < 0 && isMovingVertical()){
             currentHead.setY(Gdx.graphics.getHeight());
         }
         Rectangle newHead = new Rectangle(currentHead.x + headDirection.x, currentHead.y + headDirection.y,WIDTH,HEIGHT);
