@@ -99,11 +99,4 @@ public class Snake {
     public LinkedList<Rectangle> getBody() {
         return body;
     }
-    private boolean isMovingVertical(){
-        return headDirection.y != 0;
-    }
-    private boolean isMovingHorizontal(){
-        return headDirection.x != 0;
-    }
-
 }

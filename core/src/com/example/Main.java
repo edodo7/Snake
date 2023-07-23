@@ -56,8 +56,9 @@ public class Main extends ApplicationAdapter {
 		}
 		if (snake.hasEaten(fruit)) {
 			LinkedList<Rectangle> snakeBody = snake.getBody();
-			boolean fruitOnSnakeBody = false;
+			boolean fruitOnSnakeBody;
 			do {
+				fruitOnSnakeBody = false;
 				int x = random.nextInt((Gdx.graphics.getWidth() - 50) - 50 + 1) + 50;
 				int y = random.nextInt((Gdx.graphics.getHeight() - 50) - 50 + 1) + 50;
 				fruit.setPosition(x, y);
